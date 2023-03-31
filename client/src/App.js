@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./Components/Landing/Landing"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
