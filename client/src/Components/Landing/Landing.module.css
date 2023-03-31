@@ -16,6 +16,7 @@
   @media (min-width: 768px) {
   .gradientform {
   height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.863);
   }
   }
   

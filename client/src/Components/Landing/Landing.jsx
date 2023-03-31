@@ -9,9 +9,9 @@ export default function Landing() {
           <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
+                <div class="card rounded-3">
                   <div class="row g-0">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 bg-dark text-white rounded-start">
                       <div class="card-body p-md-5 mx-md-4">
                         <div class="text-center">
                           <img
@@ -20,10 +20,11 @@ export default function Landing() {
                             alt="logo"
                           />
                           <h4 class="mt-1 mb-5 pb-1">Somos "Proyecto David Franco"</h4>
+                          <h5 class="mt-1 mb-5 pb-1">Inicie sesion para continuar</h5>
                         </div>
 
                         <form>
-                          <p>Inicie sesion para continuar</p>
+                        
 
                           <div class="form-outline mb-4">
                             <input
@@ -63,7 +64,7 @@ export default function Landing() {
                           </div>
 
                           <div class="d-flex align-items-center justify-content-center pb-4">
-                            <p class="mt-2 mb-0 me-2">No tenes cuenta?</p>
+                            <p class="mt-2 mb-0 me-2">No tienes una cuenta?</p>
                             <button
                               type="button"
                               class="btn btn-outline-danger"
@@ -75,7 +76,7 @@ export default function Landing() {
                       </div>
                     </div>
                     
-                    <div class="col-lg-6 d-flex align-items-center bg-info bg-gradient">
+                    <div class="col-lg-6 d-flex align-items-center bg-info bg-gradient rounded-end">
                     <div >
                       <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                         <h4 class="mb-4 text-dark">We are more than just a company</h4>
