@@ -1,18 +1,7 @@
 const { Car, User } = require('../db')
 
 const getUsersDb = async () => {
-    return await User.findAll({
-        include: [
-            {
-                model: Car,
-                attributes: ['brand'],
-                through: {
-                    attributes: []
-                }
-
-            }
-        ]
-    })
+    return await User.findAll()
 }
 
 const getUserDbId = async (userId) => {
@@ -22,9 +11,9 @@ const getUserDbId = async (userId) => {
     return filteredUsers
 }
 
-const getUserDb = async (email) => {
+const getUserDb = async (empresa) => {
     const data = await getUsersDb();
-    const filteredUsers = data.filter((user) => user.email.toLowerCase().includes(email.toLowerCase()));
+    const filteredUsers = data.filter((user) => user.empresa.toLowerCase().includes(empresa.toLowerCase()));
 
     return filteredUsers
 }
@@ -36,9 +25,9 @@ const getUserName = async (name) => {
     return filteredUsers
 }
 
-const createUserDb = async (nickname, email, name, picture) => {
+const createUserDb = async (nickname, empresa, name, picture) => {
     if (!nickname) return "Missing nickname";
-    if (!email) return "Missing email";
+    if (!empresa) return "Missing empresa";
     if (!name) return "Missing name";
     if (!picture) return "Missing picture";
     
@@ -47,7 +36,7 @@ const createUserDb = async (nickname, email, name, picture) => {
             where: { name: name }
         });
     if (searchUser) return "Existing user";
-    let userCreate = await User.create({ nickname, email, name, picture });
+    let userCreate = await User.create({ nickname, empresa, name, picture });
         return userCreate;
     } catch (error) {
         throw new Error(error.message);

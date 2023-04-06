@@ -1,9 +1,9 @@
 const { getUsersDb, getUserDb, createUserDb, getUserName, deleteToUser, updateToUser, getUserDbId } = require('../controllers/usersControllers')
 
 const createUser = async (req, res) => {
-    const { nickname, email, name, picture } = req.body
+    const { nickname, empresa, name, picture } = req.body
     try {
-        const response = await createUserDb(nickname, email, name, picture)
+        const response = await createUserDb(nickname, empresa, name, picture)
         res.status(200).send(response)
     } catch (error) {
         res.status(400).json({ message: error.message })
@@ -12,10 +12,10 @@ const createUser = async (req, res) => {
 
 
 const getAllUsers = async (req, res) => {
-    const { email, name, userId } = req.query
+    const { empresa, name, userId } = req.query
     try {
-        if(email){
-            const response = await getUserDb(email)
+        if(empresa){
+            const response = await getUserDb(empresa)
             res.status(200).send(response)
         } else if(name) {
             const response = await getUserName(name)

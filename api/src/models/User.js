@@ -21,13 +21,16 @@ module.exports = (sequelize) => {
         picture: {
             type: DataTypes.STRING,
         },
-        casualties: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
-            defaultValue: [],
-        },
         admin: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        cars: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+            defaultValue: [],
+        },
+        empresa:{
+            type: DataTypes.STRING,
         },
         active: {
             type: DataTypes.BOOLEAN,

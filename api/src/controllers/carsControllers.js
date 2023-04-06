@@ -1,20 +1,10 @@
-const data = require('../../cards.json');
+const data = require('../../cars.json');
 const { Car, User } = require('../db')
-// const { deleteImage } = require('../utils/cloudinary')
+const { deleteImage } = require('../utils/cloudinary')
 
 
 const getDbCars = async () => {
-    return await Car.findAll({
-        include: [
-            {
-                model: Brand,
-                attributes: ['brand'],
-                through: {
-                    attributes: []
-                }
-            }
-        ]
-    });
+    return await Car.findAll();
 }
 
 const getApiCars = () => {
@@ -28,22 +18,27 @@ const getAllCars = async () => {
         return response;
 }
 
-
-const getCarByBrand = async (brand) => {
-        const data = await getAllCars();
-        const filteredCars = data.filter((car) => car.brand.toLowerCase().includes(brand.toLowerCase()));
+const getCarsByClient = async (cliente) => {
+    const data = await getAllCars();
+    const filteredCars = data.filter((car) => car.cliente.toLowerCase().includes(marca.toLowerCase()));
         return filteredCars;
 }
 
-const getCarByModel = async (model) => {
+const getCarByBrand = async (marca) => {
         const data = await getAllCars();
-        const filteredCars = data.filter((car) => car.model.toLowerCase().includes(model.toLowerCase()));
+        const filteredCars = data.filter((car) => car.marca.toLowerCase().includes(marca.toLowerCase()));
+        return filteredCars;
+}
+
+const getCarByModel = async (modelo) => {
+        const data = await getAllCars();
+        const filteredCars = data.filter((car) => car.modelo.toLowerCase().includes(modelo.toLowerCase()));
         return filteredCars
 }
 
-const getCarByEmail = async (email) => {
+const getCarByPlaca = async (placa) => {
     const data = await getAllCars();
-    const filteredCars = data.filter((car) => car.email.toLowerCase().includes(email.toLowerCase()));
+    const filteredCars = data.filter((car) => car.placa.toLowerCase().includes(placa.toLowerCase()));
     return filteredCars
 }
 
@@ -52,22 +47,18 @@ const getCarDetail = async (id) => {
     const filteredCars = data.filter((car) => car.id == id||car.carId==id );
     return filteredCars;
 }
-const createCar = async ({ brand, model, year, price, img, ...restOfcar }, userId) => {
-    if (!brand || !model || !year || !price ) return ('Missing info');
-    const carCreate =  await Car.create({ brand, model, year, price, img, ...restOfcar});
+const createCar = async ({ marca, modelo, cliente, placa, imagen, ...restOfcar }, userId) => {
+    if (!marca || !modelo || !cliente || !placa ) return ('Missing info');
+    const carCreate =  await Car.create({ marca, modelo, cliente, placa, imagen, ...restOfcar});
     let searchUser = await User.findOne({
         where: { userId: userId }
     });
     if (searchUser) {
-        searchUser.publications.push(carCreate.carId);
-        await User.update({ publications: searchUser.publications }, {
-            where: { userId: userId }
+        searchUser.cars.push(carCreate.carId);
+        await User.update({ cars: searchUser.cars }, {
+            where: { empresa: cliente }
         });
     } else return ('this user does not exist')
-    const brandDB =  await Brand.findOne({
-        where: { brand }
-    });
-    await carCreate.addBrand(brandDB);
     return carCreate;
 }
 
@@ -81,9 +72,9 @@ const deleteCarById = async(userId, id) => {
     });
     if(!searchUser) return ('This User not exist')
     if (!car) return ('Car not found');
-    // if(car.img.public_id) {
-    //     const deleteImg = await deleteImage(car.img.public_id)
-    //     }
+    if(car.img.public_id) {
+        const deleteImg = await deleteImage(car.img.public_id)
+        }
 
     await car.destroy();
     if(searchUser.publications.length){
@@ -129,5 +120,6 @@ module.exports = {
     createCar,
     editCar,
     getAllCars,
-    getCarByEmail
+    getCarByPlaca,
+    getCarsByClient
 };

@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     modelo: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     placa :{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull : false
     },
     cliente:{
@@ -31,68 +31,68 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    AmparoAfectado:{
+    amparoAfectado:{
         type: DataTypes.STRING,
         allowNull: false,
     },
     fechaSiniestro:{
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull : false
     },
     tallerAsignado:{
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     imagen:{
         type: DataTypes.JSON
     },
     fechaValoracion:{
-        type: DataTypes.TEXT,
-        allowNull: false,
+        type: DataTypes.DATE,
+        allowNull: true,
     },
     fechaIngresoTaller:{
-        type: DataTypes.TEXT,
-        allowNull: false,
+        type: DataTypes.DATE,
+        allowNull: true,
     },
     fechaEntregaVehiculo: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+        type: DataTypes.DATE,
+        allowNull: true,
     },
     diasEnTaller:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     telefono:{
-        type: DataTypes.TEXT,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     ciudad:{
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     contactoTaller:{
-        type: DataTypes.TEXT,
-        allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     recobro:{
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
     },
     reserva:{
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
     },
     valorSiniestro:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     valorFinal:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     version:{
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
     },
     createInDb: {
         type: DataTypes.BOOLEAN,
