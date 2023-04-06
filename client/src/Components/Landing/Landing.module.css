@@ -1,32 +1,37 @@
-.gradientcustom2 {
+.btn {
   /* fallback for old browsers */
   background: #fccb90;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(
-    to right,
-    #ee7724,
-    #d8363a,
-    #dd3675,
-    #b44593
-  );
+  width: 300px;
+  height: 50px;
+  border: none;
   
-
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-}
-.gradientform {
-  height: 100%;
-}
-
-@media (min-width: 768px) {
+  }
+  
+  @media (min-width: 768px) {
   .gradientform {
-    height: 100vh !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.863);
   }
+  }
+  
+  .gradientcustom2{
+    background: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+   
+  }
+
+section {
+  background-color:#eee;
 }
-@media (min-width: 769px) {
-  .gradientcustom2 {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-  }
+.img {
+  width: 185px;
 }
